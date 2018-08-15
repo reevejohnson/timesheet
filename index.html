@@ -32,8 +32,22 @@
             </div>
             
             <div class="form-input">
-                <label for="date">Monthly Rate</label>
-                <input class="form-control" id="start-date" placeholder="i.e. 01/01/1999">
+                    <div class="bootstrap-iso">
+                            <div class="container-fluid">
+                             <div class="row">
+                              <div class="col-md-6 col-sm-6 col-xs-12">
+                           
+                               <!-- Form code begins -->
+                                 <div class="form-group"> <!-- Date input -->
+                                   <label class="control-label" for="date">Start Date</label>
+                                   <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
+                                 </div>
+
+                           
+                               </div>
+                             </div>    
+                            </div>
+                           </div>
             </div>
             
             <div class="form-input">
@@ -50,7 +64,7 @@
           <br>
 
           <section class="container">
-          <table class="table table-hover">
+          <table class="table table-hover" class="logged">
                 <thead>
                   <tr>
                     <th scope="col">Employee Name</th>
@@ -62,24 +76,8 @@
                     </th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
+                <tbody id="table-body">
+                
                 </tbody>
               </table>
             </section>

@@ -25,7 +25,7 @@ $("#form-submit").on("click", function(event) {
     // Don't forget to provide initial data to your Firebase database.
     name = $("#employee-name").val().trim();
     role = $("#employee-role").val().trim();
-    startDate = $("#date").val().trim();
+    startDate = $("#date").val();
     rate = $("#monthly-rate").val().trim();
 
     database.ref().push({
@@ -35,4 +35,31 @@ $("#form-submit").on("click", function(event) {
       rate: rate
     });
 
+  });
+
+  database.ref().on("child_added", function(childSnapshot) {
+      console.log(childSnapshot.val().name);
+      console.log(childSnapshot.val().role);
+      console.log(childSnapshot.val().startDate);
+      console.log(childSnapshot.val().rate);
+
+
+      $("#table-body").append("<tr><td id='logged-name'>" + childSnapshot.val().name +
+        "</td> <td id='logged-role'>" + childSnapshot.val().role +
+          "</td> <td id='logged-startDate'>" + childSnapshot.val().startDate +
+          "</td> <td> </td> <td id='logged-rate'>" + childSnapshot.val().rate + "</td> <td> </td> </tr>");
+    
+  },
+
+  function(errorObject) {
+      console.log("Errors handled: " + errorObject.code);
+
+  });
+
+  database.ref().orderByChild("startDate").limitToLast(1).on("child_added", function(snapshot) {
+    // Change the HTML to reflect
+    $("#logged-name").text(snapshot.val().name);
+    $("#logged-role").text(snapshot.val().role);
+    $("#logged-startDate").text(snapshot.val().startDate);
+    $("#logged-rate").text(snapshot.val().rate);
   });
